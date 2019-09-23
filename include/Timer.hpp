@@ -10,15 +10,19 @@
 
 #include <iostream>
 #include <chrono>
+#include <string>
 
 namespace Chronos {
     class Timer {
     private:
+        std::string name;
         std::chrono::time_point<std::chrono::steady_clock> start;
     public:
-        Timer();
+        explicit Timer(std::string name);
 
         ~Timer();
+
+        void start_timer();
 
         void stop_timer();
     };
