@@ -10,3 +10,8 @@ add_executable(example_1)
 target_sources(example_1 PRIVATE example_1.cpp)
 target_include_directories(example_1 PRIVATE ${CMAKE_SOURCE_DIR}/include)
 target_link_libraries(example_1 PRIVATE Chrono)
+
+add_executable(example_2)
+target_sources(example_2 PRIVATE example_2.cpp)
+target_include_directories(example_2 PRIVATE ${CMAKE_SOURCE_DIR}/include)
+target_link_libraries(example_2 PRIVATE Chrono)
