@@ -9,12 +9,11 @@
 #include "Timers.hpp"
 
 int main() {
-    std::cout << "Running example_1" << std::endl;
+    std::cout << "Running example_2" << std::endl;
 
     Chronos::Timers timers;
     timers.add_timer("timer1");
     timers.add_timer("timer2");
-
 
     timers.get_timer("timer1").start_timer();
     timers.get_timer("timer2").start_timer();
