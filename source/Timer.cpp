@@ -16,11 +16,12 @@ namespace Chronos {
 
     void Timer::start_timer() {
         start = std::chrono::steady_clock::now();
+        start_time = std::chrono::steady_clock::now();
     }
 
     void Timer::stop_timer() {
-        end = std::chrono::steady_clock::now();
-        elapsed_seconds = end - start;
+        end_time = std::chrono::steady_clock::now();
+        elapsed_seconds = end_time - start_time;
         std::cout << "Timer named " << name << " measured " << elapsed_seconds.count() << " s\n";
     }
 

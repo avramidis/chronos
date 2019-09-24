@@ -12,7 +12,7 @@ int main() {
 
     Chronos::Timer timer("timer1");
 
-    timer.start_timer();
+    timer.start();
 
     for (int i = 0; i < 100000; i++) {
         std::cout << "Hello from example_1\n";

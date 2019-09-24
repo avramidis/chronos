@@ -16,8 +16,8 @@ namespace Chronos {
     class Timer {
     private:
         std::string name;
-        std::chrono::time_point<std::chrono::steady_clock> start;
-        std::chrono::time_point<std::chrono::steady_clock> end;
+        std::chrono::time_point<std::chrono::steady_clock> start_time;
+        std::chrono::time_point<std::chrono::steady_clock> end_time;
         std::chrono::duration<double> elapsed_seconds;
 
     public:
@@ -25,7 +25,7 @@ namespace Chronos {
 
         ~Timer();
 
-        void start_timer();
+        void start();
 
         void stop_timer();
 

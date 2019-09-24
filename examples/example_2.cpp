@@ -15,8 +15,8 @@ int main() {
     timers.add_timer("timer1");
     timers.add_timer("timer2");
 
-    timers.get_timer("timer1").start_timer();
-    timers.get_timer("timer2").start_timer();
+    timers.get_timer("timer1").start();
+    timers.get_timer("timer2").start();
 
     for (int i = 0; i < 100000; i++) {
         std::cout << "Hello from example_1\n";
