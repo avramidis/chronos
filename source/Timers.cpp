@@ -15,12 +15,12 @@ namespace Chronos {
     Timers::~Timers() = default;
 
     void Timers::add_timer(const std::string &name) {
-        auto search = timers.find(name);
 
-        if (search != timers.end()) {
+        std::pair<std::unordered_map<std::string, Timer>::iterator, bool> insert_check = timers.insert(
+                std::pair<std::string, Timer>(name, Timer(name)));
+
+        if (!insert_check.second) {
             throw std::invalid_argument(std::string("Timer named ") + name + std::string(" already exists!\n"));
-        } else {
-            timers.insert(std::pair<std::string, Timer>(name, Timer(name)));
         }
     }
 
