@@ -28,6 +28,8 @@ namespace Chronos {
         void start_timer();
 
         void stop_timer();
+
+        std::string get_name();
     };
 }
 

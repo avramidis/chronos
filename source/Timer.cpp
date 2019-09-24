@@ -23,4 +23,8 @@ namespace Chronos {
         elapsed_seconds = end - start;
         std::cout << "Timer named " << name << " measured " << elapsed_seconds.count() << " s\n";
     }
+
+    std::string Timer::get_name() {
+        return name;
+    }
 }
