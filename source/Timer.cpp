@@ -19,8 +19,8 @@ namespace Chronos {
     }
 
     void Timer::stop_timer() {
-        auto end = std::chrono::steady_clock::now();
-        std::chrono::duration<double> elapsed_seconds = end - start;
+        end = std::chrono::steady_clock::now();
+        elapsed_seconds = end - start;
         std::cout << "Timer named " << name << " measured " << elapsed_seconds.count() << " s\n";
     }
 }

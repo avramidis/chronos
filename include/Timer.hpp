@@ -17,6 +17,9 @@ namespace Chronos {
     private:
         std::string name;
         std::chrono::time_point<std::chrono::steady_clock> start;
+        std::chrono::time_point<std::chrono::steady_clock> end;
+        std::chrono::duration<double> elapsed_seconds;
+
     public:
         explicit Timer(std::string name);
 
