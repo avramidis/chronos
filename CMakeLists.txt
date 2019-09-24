@@ -14,6 +14,15 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 set(CMAKE_CXX_STANDARD 17)
 
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+    message(STATUS "USING OPTIONS FOR GNU COMPILER")
+    set(MY_DEBUG_OPTIONS "-O0;-g;-Wall;-Wextra;-Wpedantic")
+    set(MY_RELEASE_OPTIONS "-O3;-Wall;-Wextra;-Wpedantic")
+endif ()
+
+add_compile_options("$<$<CONFIG:DEBUG>:${MY_DEBUG_OPTIONS}>")
+add_compile_options("$<$<CONFIG:RELEASE>:${MY_RELEASE_OPTIONS}>")
+
 add_library(Chrono SHARED)
 target_sources(Chrono PRIVATE
         source/Timer.cpp
