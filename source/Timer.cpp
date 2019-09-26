@@ -53,7 +53,12 @@ namespace Chronos {
     }
 
     void Timer::reset() {
-
+        if (!is_measuring) {
+            elapsed_seconds = std::chrono::duration<double>::zero();
+        } else {
+            throw std::runtime_error(
+                    std::string("Cannot rest Timer named ") + name + std::string(" because is measuring!\n"));
+        }
     }
 
     void Timer::print_elapsed_time() {
