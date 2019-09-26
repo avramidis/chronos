@@ -35,8 +35,14 @@ namespace Chronos {
     }
 
     void Timers::stop_timers() {
-        for (auto t:timers) {
+        for (auto &t:timers) {
             t.second.stop_timer(false);
+        }
+    }
+
+    void Timers::print_timers_elapsed_time() {
+        for (auto &t:timers) {
+            t.second.print_elapsed_time();
         }
     }
 }
