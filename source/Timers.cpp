@@ -33,5 +33,11 @@ namespace Chronos {
             throw std::invalid_argument(std::string("Timer named ") + name + std::string(" was not found!\n"));
         }
     }
+
+    void Timers::stop_timers() {
+        for (auto t:timers) {
+            t.second.stop_timer(false);
+        }
+    }
 }
 

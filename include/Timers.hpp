@@ -25,6 +25,8 @@ namespace Chronos {
         void add_timer(const std::string &name);
 
         Timer get_timer(const std::string &name);
+
+        void stop_timers();
     };
 }
 
