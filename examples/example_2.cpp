@@ -22,13 +22,13 @@ int main() {
         std::cout << "Hello from example_1\n";
     }
 
-    timers.get_timer("timer2").stop_timer();
+    timers.get_timer("timer2").stop_timer(true);
 
     for (int i = 0; i < 10000; i++) {
         std::cout << "Hello from example_1\n";
     }
 
-    timers.get_timer("timer1").stop_timer();
+    timers.get_timer("timer1").stop_timer(true);
 
     return 0;
 }

@@ -20,7 +20,7 @@ int main() {
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 
-    timer.stop_timer();
+    timer.stop_timer(false);
     timer.print_elapsed_time();
 
     return 0;

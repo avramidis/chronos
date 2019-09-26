@@ -28,7 +28,7 @@ namespace Chronos {
 
         void start();
 
-        void stop_timer();
+        void stop_timer(bool print_elapsed_time);
 
         void pause();
 
