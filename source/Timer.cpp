@@ -55,4 +55,14 @@ namespace Chronos {
     void Timer::reset() {
 
     }
+
+    void Timer::print_elapsed_time() {
+        if (!is_measuring) {
+            std::cout << "Timer named " << name << " measured " << elapsed_seconds.count() << " s\n";
+        } else {
+            throw std::runtime_error(
+                    std::string("Cannot print elapsed time of Timer named ") + name +
+                    std::string(" because is measuring!\n"));
+        }
+    }
 }

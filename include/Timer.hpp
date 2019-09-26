@@ -37,6 +37,8 @@ namespace Chronos {
         void reset();
 
         std::string get_name();
+
+        void print_elapsed_time();
     };
 }
 
