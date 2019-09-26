@@ -24,7 +24,7 @@ namespace Chronos {
         }
     }
 
-    Timer Timers::get_timer(const std::string &name) {
+    Timer &Timers::get_timer(const std::string &name) {
         auto search = timers.find(name);
 
         if (search != timers.end()) {
