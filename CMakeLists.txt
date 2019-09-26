@@ -23,11 +23,11 @@ endif ()
 add_compile_options("$<$<CONFIG:DEBUG>:${MY_DEBUG_OPTIONS}>")
 add_compile_options("$<$<CONFIG:RELEASE>:${MY_RELEASE_OPTIONS}>")
 
-add_library(Chrono SHARED)
-target_sources(Chrono PRIVATE
+add_library(Chronos SHARED)
+target_sources(Chronos PRIVATE
         source/Timer.cpp
         source/Timers.cpp)
-target_include_directories(Chrono PRIVATE
+target_include_directories(Chronos PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 add_subdirectory(examples)
