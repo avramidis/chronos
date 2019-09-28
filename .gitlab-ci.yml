@@ -1,0 +1,29 @@
+stages:
+  - build
+  - test
+
+build:ubuntu:
+  image: ubuntu:rolling
+  stage: build
+  tags:
+    - docker
+  script:
+    - apt-get update && apt-get install -y build-essential cmake
+    - cd /builds/$CI_PROJECT_PATH
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make
+  artifacts:
+    paths:
+      - build
+
+test:ubuntu:
+  image: ubuntu:rolling
+  stage: test
+  tags:
+    - docker
+  script:
+    - apt-get update && apt-get install -y build-essential cmake
+    - cd /builds/$CI_PROJECT_PATH/build
+    - ctest
