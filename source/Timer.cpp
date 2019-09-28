@@ -16,8 +16,13 @@ namespace Chronos {
     Timer::~Timer() = default;
 
     void Timer::start() {
-        is_measuring = true;
-        start_time = std::chrono::steady_clock::now();
+        if (!is_measuring) {
+            is_measuring = true;
+            start_time = std::chrono::steady_clock::now();
+        } else {
+            throw std::runtime_error(
+                    std::string("Cannot start Timer named ") + name + std::string(" because is measuring!\n"));
+        }
     }
 
     void Timer::stop_timer(bool print_elapsed_time) {
