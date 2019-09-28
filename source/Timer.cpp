@@ -21,11 +21,16 @@ namespace Chronos {
     }
 
     void Timer::stop_timer(bool print_elapsed_time) {
-        end_time = std::chrono::steady_clock::now();
-        elapsed_seconds = end_time - start_time;
-        is_measuring = false;
-        if (print_elapsed_time) {
-            std::cout << "Timer named " << name << " measured " << elapsed_seconds.count() << " s\n";
+        if (is_measuring) {
+            end_time = std::chrono::steady_clock::now();
+            elapsed_seconds += end_time - start_time;
+            is_measuring = false;
+            if (print_elapsed_time) {
+                std::cout << "Timer named " << name << " measured " << elapsed_seconds.count() << " s\n";
+            }
+        } else {
+            throw std::runtime_error(
+                    std::string("Cannot stop Timer named ") + name + std::string(" because is not measuring!\n"));
         }
     }
 
