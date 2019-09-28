@@ -10,7 +10,7 @@
 #include <thread>
 
 int main() {
-    std::cout << "Running example_2" << std::endl;
+    std::cout << "Running example_3" << std::endl;
 
     Chronos::Timers timers;
     timers.add_timer("timer1");
