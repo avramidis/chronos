@@ -31,3 +31,5 @@ target_include_directories(Chronos PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 add_subdirectory(examples)
+enable_testing()
+add_subdirectory(tests)
