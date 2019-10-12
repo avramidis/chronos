@@ -11,9 +11,10 @@
 #include "Timer.hpp"
 #include <unordered_map>
 #include <string>
+#include "DLLDefines.h"
 
 namespace Chronos {
-    class Timers {
+    class CHRONOS_EXPORT Timers {
     private:
         std::unordered_map<std::string, Timer> timers;
 

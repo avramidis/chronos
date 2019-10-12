@@ -20,6 +20,12 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     set(MY_RELEASE_OPTIONS "-O3;-Wall;-Wextra;-Wpedantic")
 endif ()
 
+if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+    message(STATUS "USING OPTIONS FOR MSVC COMPILER")
+    set(MY_DEBUG_OPTIONS "/Wall /wd4710")
+    set(MY_RELEASE_OPTIONS "/Wall;/wd4710;/wd4711;/wd4514")
+endif ()
+
 add_compile_options("$<$<CONFIG:DEBUG>:${MY_DEBUG_OPTIONS}>")
 add_compile_options("$<$<CONFIG:RELEASE>:${MY_RELEASE_OPTIONS}>")
 
@@ -30,6 +36,26 @@ target_sources(Chronos PRIVATE
 target_include_directories(Chronos PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
+if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+    target_compile_definitions(Chronos PRIVATE Chronos_EXPORT)
+endif ()
+
 add_subdirectory(examples)
 enable_testing()
 add_subdirectory(tests)
+
+if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+    add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/examples/Chronos.dll
+            COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/Chronos.dll ${CMAKE_BINARY_DIR}/examples/
+            VERBATIM)
+    add_custom_target(copyddlexamples ALL
+            DEPENDS ${CMAKE_BINARY_DIR}/examples/Chronos.dll Chronos
+            VERBATIM)
+
+    add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/tests/Chronos.dll
+            COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/Chronos.dll ${CMAKE_BINARY_DIR}/tests/
+            VERBATIM)
+    add_custom_target(copyddltests ALL
+            DEPENDS ${CMAKE_BINARY_DIR}/tests/Chronos.dll Chronos
+            VERBATIM)
+endif ()

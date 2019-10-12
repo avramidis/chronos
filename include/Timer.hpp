@@ -11,9 +11,10 @@
 #include <iostream>
 #include <chrono>
 #include <string>
+#include "DLLDefines.h"
 
 namespace Chronos {
-    class Timer {
+    class CHRONOS_EXPORT Timer {
     private:
         std::string name;
         std::chrono::time_point<std::chrono::steady_clock> start_time;
