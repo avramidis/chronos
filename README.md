@@ -2,6 +2,7 @@
 ![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg)
 ![GitHub](https://img.shields.io/github/license/avramidis/chronos)
 [![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/avramidis/chronos)](https://gitlab.com/avramidis/chronos/pipelines)
+[![Build status](https://ci.appveyor.com/api/projects/status/v4rx3j3hoc561262/branch/master?svg=true)](https://ci.appveyor.com/project/avramidis/chronos/branch/master)
 
 Chronos is a library for measuring the wall time of different parts of C++ applications.
 
