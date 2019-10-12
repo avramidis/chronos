@@ -10,4 +10,4 @@ build_script:
 test_script:
   - cd %APPVEYOR_BUILD_FOLDER%
   - cd build
-  - ctest
+  - ctest -C Release
