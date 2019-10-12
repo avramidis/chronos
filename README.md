@@ -25,21 +25,37 @@ git clone https://github.com/avramidis/chronos.git
 ```
 
 ### Installing
-
-A step by step series of examples that tell you have to get a development environment running
-
+A step by step series of examples that tell you have to get a development environment running. 
 To generate the makefiles use the following commands in a terminal in the chronos folders
+For Ubuntu:
 
+```
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release ..
+```
+
+For Windows:
 ```
 mkdir build
 cd build
 cmake ..
 ```
 
-To build chronos use the following command
-
+To build chronos use the following
+For Ubuntu:
 ```
 make
+```
+
+For Windows 10:
+```
+cmake --build . --target ALL_BUILD --config Release
+```
+
+To run the tests use the following
+```
+ctest -C Release
 ```
 
 ## License
