@@ -4,8 +4,8 @@ build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
   - mkdir build
   - cd build
-  - cmake -DCMAKE_BUILD_TYPE=Release ..
-  - cmake --build . --target all --config Release
+  - cmake ..
+  - cmake --build . --target ALL_BUILD --config Release
 
 test_script:
   - cd %APPVEYOR_BUILD_FOLDER%
