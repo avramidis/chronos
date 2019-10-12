@@ -1,0 +1,13 @@
+image: Visual Studio 2019
+
+build_script:
+  - cd $APPVEYOR_BUILD_FOLDER
+  - mkdir build
+  - cd build
+  - cmake -DCMAKE_BUILD_TYPE=Release ..
+  - cmake --build . --target all --config Release
+
+test_script:
+  - cd $APPVEYOR_BUILD_FOLDER
+  - cd build
+  - ctest
