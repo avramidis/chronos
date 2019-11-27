@@ -8,7 +8,12 @@ build:ubuntu:
   tags:
     - docker
   script:
-    - apt-get update && apt-get install -y build-essential cmake
+    - apt-get update && apt-get install -y build-essential wget
+    - mkdir cmake
+    - wget https://github.com/Kitware/CMake/releases/download/v3.16.0/cmake-3.16.0-Linux-x86_64.tar.gz
+    - tar -xf cmake-3.16.0-Linux-x86_64.tar.gz
+    - cd cmake-3.16.0-Linux-x86_64/bin
+    - cp * /usr/local/bin/
     - cd /builds/$CI_PROJECT_PATH
     - mkdir build
     - cd build
