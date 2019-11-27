@@ -4,7 +4,7 @@
 # See accompanying file LICENSE.txt
 #---------------------------------------------------------------------------//
 
-cmake_minimum_required(VERSION 3.13.4)
+cmake_minimum_required(VERSION 3.15)
 
 project(tests)
 
