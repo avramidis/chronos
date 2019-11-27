@@ -82,3 +82,14 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
             DEPENDS ${CMAKE_BINARY_DIR}/tests/Chronos.dll Chronos
             VERBATIM)
 endif ()
+
+include(GNUInstallDirs)
+install(TARGETS Chronos
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        COMPONENT SameProj_RunTime
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        COMPONENT SameProj_RunTime
+        NAMELINK_COMPONENT SomeProj_Development
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        COMPONENT SomeProj_Development
+        )
