@@ -11,7 +11,7 @@
 #include "Timer.hpp"
 #include <unordered_map>
 #include <string>
-#include "DLLDefines.h"
+#include "chronos_export.h"
 
 namespace Chronos {
     class CHRONOS_EXPORT Timers {

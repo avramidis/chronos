@@ -11,8 +11,10 @@ project(Chronos
         DESCRIPTION "Walltime measurement library.")
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-
 set(CMAKE_CXX_STANDARD 17)
+
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+set(CMAKE_VISIBILITY_INLINES_HIDDEN YES)
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     message(STATUS "USING OPTIONS FOR GNU COMPILER")
@@ -34,7 +36,8 @@ target_sources(Chronos PRIVATE
         source/Timer.cpp
         source/Timers.cpp)
 target_include_directories(Chronos PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/include)
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${CMAKE_BINARY_DIR})
 
 set_target_properties(Chronos PROPERTIES
         ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
@@ -48,6 +51,11 @@ set_target_properties(Chronos PROPERTIES
 if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     target_compile_definitions(Chronos PRIVATE Chronos_EXPORT)
 endif ()
+
+include(GenerateExportHeader)
+generate_export_header(Chronos)
+
+include(CMakePackageConfigHelpers)
 
 write_basic_package_version_file(
         SomeProjConfigVersion.cmake

@@ -11,7 +11,7 @@
 #include <iostream>
 #include <chrono>
 #include <string>
-#include "DLLDefines.h"
+#include "chronos_export.h"
 
 namespace Chronos {
     class CHRONOS_EXPORT Timer {
