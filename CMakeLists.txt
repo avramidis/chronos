@@ -56,14 +56,6 @@ endif ()
 include(GenerateExportHeader)
 generate_export_header(Chronos)
 
-include(CMakePackageConfigHelpers)
-
-write_basic_package_version_file(
-        SomeProjConfigVersion.cmake
-        VERSION 1.0.0
-        COMPATIBILITY SameMajorVersion
-)
-
 add_subdirectory(examples)
 enable_testing()
 add_subdirectory(tests)
@@ -115,5 +107,5 @@ write_basic_package_version_file(
         VERSION 1.0.0
         COMPATIBILITY SameMajorVersion)
 
-install(FILES ${PROJECT_BINARY_DIR}/source/ChronosConfigVersion.cmake
+install(FILES ${PROJECT_BINARY_DIR}/ChronosConfigVersion.cmake
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Chronos)
