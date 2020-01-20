@@ -31,6 +31,7 @@ endif ()
 add_compile_options("$<$<CONFIG:DEBUG>:${MY_DEBUG_OPTIONS}>")
 add_compile_options("$<$<CONFIG:RELEASE>:${MY_RELEASE_OPTIONS}>")
 
+include(GNUInstallDirs)
 add_library(Chronos SHARED)
 target_sources(Chronos PRIVATE
         source/Timer.cpp
@@ -83,13 +84,36 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
             VERBATIM)
 endif ()
 
-include(GNUInstallDirs)
-install(TARGETS Chronos
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        COMPONENT SameProj_RunTime
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        COMPONENT SameProj_RunTime
-        NAMELINK_COMPONENT SomeProj_Development
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        COMPONENT SomeProj_Development
-        )
+install(TARGETS Chronos EXPORT ChronosTargets
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Chronos_RunTime
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Chronos_RunTime NAMELINK_COMPONENT Chronos_Development
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Chronos_Development
+        INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/
+        TYPE INCLUDE
+        FILES_MATCHING
+        PATTERN *.hpp
+        PERMISSIONS OWNER_READ OWNER_WRITE
+        GROUP_READ
+        WORLD_READ)
+
+install(FILES ${CMAKE_BINARY_DIR}/Chronos_export.h
+        TYPE INCLUDE
+        PERMISSIONS OWNER_READ OWNER_WRITE
+        GROUP_READ
+        WORLD_READ)
+
+install(EXPORT ChronosTargets
+        NAMESPACE Chronos::
+        FILE ChronosConfig.cmake
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Chronos)
+
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file(
+        ChronosConfigVersion.cmake
+        VERSION 1.0.0
+        COMPATIBILITY SameMajorVersion)
+
+install(FILES ${PROJECT_BINARY_DIR}/source/ChronosConfigVersion.cmake
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Chronos)
