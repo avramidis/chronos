@@ -98,7 +98,7 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/
         GROUP_READ
         WORLD_READ)
 
-install(FILES ${CMAKE_BINARY_DIR}/Chronos_export.h
+install(FILES ${CMAKE_BINARY_DIR}/chronos_export.h
         TYPE INCLUDE
         PERMISSIONS OWNER_READ OWNER_WRITE
         GROUP_READ
