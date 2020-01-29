@@ -36,9 +36,11 @@ add_library(Chronos SHARED)
 target_sources(Chronos PRIVATE
         source/Timer.cpp
         source/Timers.cpp)
-target_include_directories(Chronos PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/include
-        ${CMAKE_BINARY_DIR})
+
+target_include_directories(Chronos PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
+        $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
 set_target_properties(Chronos PROPERTIES
         ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
