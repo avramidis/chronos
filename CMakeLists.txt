@@ -56,8 +56,8 @@ endif ()
 include(GenerateExportHeader)
 generate_export_header(Chronos)
 
-option(ENABLE_EXAMPLES "Enable examples" ON)
-option(ENABLE_TESTS "Enable tests" ON)
+option(ENABLE_EXAMPLES "Enable examples" OFF)
+option(ENABLE_TESTS "Enable tests" OFF)
 
 if (ENABLE_EXAMPLES)
     add_subdirectory(examples)
