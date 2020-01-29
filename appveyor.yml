@@ -4,8 +4,8 @@ build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
   - mkdir build
   - cd build
-  - cmake ..
-  - cmake --build . --target ALL_BUILD --config Release -DENABLE_EXAMPLES=ON -DENABLE_TESTS=ON
+  - cmake  -DENABLE_EXAMPLES=ON -DENABLE_TESTS=ON ..
+  - cmake --build . --target ALL_BUILD --config Release
 
 test_script:
   - cd %APPVEYOR_BUILD_FOLDER%
