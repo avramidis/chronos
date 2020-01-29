@@ -56,9 +56,17 @@ endif ()
 include(GenerateExportHeader)
 generate_export_header(Chronos)
 
-add_subdirectory(examples)
-enable_testing()
-add_subdirectory(tests)
+option(ENABLE_EXAMPLES "Enable examples" ON)
+option(ENABLE_TESTS "Enable tests" ON)
+
+if (ENABLE_EXAMPLES)
+    add_subdirectory(examples)
+endif ()
+
+if (ENABLE_TESTS)
+    enable_testing()
+    add_subdirectory(tests)
+endif ()
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/examples/Chronos.dll
