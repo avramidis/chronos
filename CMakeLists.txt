@@ -69,19 +69,23 @@ if (ENABLE_TESTS)
 endif ()
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-    add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/examples/Chronos.dll
-            COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:Chronos>" "$<TARGET_FILE_DIR:example_1>"
-            VERBATIM)
-    add_custom_target(copyddlexamples ALL
-            DEPENDS ${CMAKE_BINARY_DIR}/examples/Chronos.dll Chronos
-            VERBATIM)
+    if (ENABLE_EXAMPLES)
+        add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/examples/Chronos.dll
+                COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:Chronos>" "$<TARGET_FILE_DIR:example_1>"
+                VERBATIM)
+        add_custom_target(copyddlexamples ALL
+                DEPENDS ${CMAKE_BINARY_DIR}/examples/Chronos.dll Chronos
+                VERBATIM)
+    endif ()
 
-    add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/tests/Chronos.dll
-            COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:Chronos>" "$<TARGET_FILE_DIR:test_timer>"
-            VERBATIM)
-    add_custom_target(copyddltests ALL
-            DEPENDS ${CMAKE_BINARY_DIR}/tests/Chronos.dll Chronos
-            VERBATIM)
+    if (ENABLE_TESTS)
+        add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/tests/Chronos.dll
+                COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:Chronos>" "$<TARGET_FILE_DIR:test_timer>"
+                VERBATIM)
+        add_custom_target(copyddltests ALL
+                DEPENDS ${CMAKE_BINARY_DIR}/tests/Chronos.dll Chronos
+                VERBATIM)
+    endif ()
 endif ()
 
 install(TARGETS Chronos EXPORT ChronosTargets
