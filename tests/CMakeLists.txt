@@ -4,10 +4,6 @@
 # See accompanying file LICENSE.txt
 #---------------------------------------------------------------------------//
 
-cmake_minimum_required(VERSION 3.15)
-
-project(tests)
-
 add_executable(test_timer test_timer.cpp)
 target_include_directories(test_timer PRIVATE
         ${CMAKE_SOURCE_DIR}/include
