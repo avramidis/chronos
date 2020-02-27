@@ -4,7 +4,7 @@ build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
   - mkdir build
   - cd build
-  - cmake  -DENABLE_EXAMPLES=ON -DENABLE_TESTS=ON ..
+  - cmake  -DCHRONOS_ENABLE_EXAMPLES=ON -DCHRONOS_ENABLE_TESTS=ON ..
   - cmake --build . --target ALL_BUILD --config Release
 
 test_script:
