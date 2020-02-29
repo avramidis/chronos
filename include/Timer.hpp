@@ -8,21 +8,21 @@
 #ifndef CHRONOS_TIMER_HPP
 #define CHRONOS_TIMER_HPP
 
-#include <iostream>
-#include <chrono>
-#include <string>
 #include "chronos_export.h"
+#include <chrono>
+#include <iostream>
+#include <string>
 
 namespace Chronos {
     class CHRONOS_EXPORT Timer {
-    private:
+      private:
         std::string name;
         std::chrono::time_point<std::chrono::steady_clock> start_time;
         std::chrono::time_point<std::chrono::steady_clock> end_time;
         std::chrono::duration<double> elapsed_seconds;
         bool is_measuring;
 
-    public:
+      public:
         explicit Timer(std::string name);
 
         ~Timer();
@@ -41,6 +41,6 @@ namespace Chronos {
 
         void print_elapsed_time();
     };
-}
+} // namespace Chronos
 
-#endif //CHRONOS_TIMER_HPP
+#endif // CHRONOS_TIMER_HPP
