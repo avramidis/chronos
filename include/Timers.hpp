@@ -9,16 +9,16 @@
 #define CHRONOS_TIMERS_HPP
 
 #include "Timer.hpp"
-#include <unordered_map>
-#include <string>
 #include "chronos_export.h"
+#include <string>
+#include <unordered_map>
 
 namespace Chronos {
     class CHRONOS_EXPORT Timers {
-    private:
+      private:
         std::unordered_map<std::string, Timer> timers;
 
-    public:
+      public:
         Timers();
 
         ~Timers();
@@ -31,6 +31,6 @@ namespace Chronos {
 
         void print_timers_elapsed_time();
     };
-}
+} // namespace Chronos
 
-#endif //CHRONOS_TIMERS_HPP
+#endif // CHRONOS_TIMERS_HPP

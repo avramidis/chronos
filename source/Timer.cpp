@@ -6,12 +6,13 @@
 //---------------------------------------------------------------------------//
 
 #include "Timer.hpp"
-#include <utility>
 #include <stdexcept>
+#include <utility>
 
 namespace Chronos {
 
-    Timer::Timer(std::string name) : name(std::move(name)), is_measuring(false) {}
+    Timer::Timer(std::string name)
+        : name(std::move(name)), is_measuring(false) {}
 
     Timer::~Timer() = default;
 
@@ -20,8 +21,9 @@ namespace Chronos {
             is_measuring = true;
             start_time = std::chrono::steady_clock::now();
         } else {
-            throw std::runtime_error(
-                    std::string("Cannot start Timer named ") + name + std::string(" because is measuring!\n"));
+            throw std::runtime_error(std::string("Cannot start Timer named ") +
+                                     name +
+                                     std::string(" because is measuring!\n"));
         }
     }
 
@@ -31,17 +33,17 @@ namespace Chronos {
             elapsed_seconds += end_time - start_time;
             is_measuring = false;
             if (print_elapsed_time) {
-                std::cout << "Timer named " << name << " measured " << elapsed_seconds.count() << " s\n";
+                std::cout << "Timer named " << name << " measured "
+                          << elapsed_seconds.count() << " s\n";
             }
         } else {
             throw std::runtime_error(
-                    std::string("Cannot stop Timer named ") + name + std::string(" because is not measuring!\n"));
+                std::string("Cannot stop Timer named ") + name +
+                std::string(" because is not measuring!\n"));
         }
     }
 
-    std::string Timer::get_name() {
-        return name;
-    }
+    std::string Timer::get_name() { return name; }
 
     void Timer::pause() {
         if (is_measuring) {
@@ -50,7 +52,8 @@ namespace Chronos {
             is_measuring = false;
         } else {
             throw std::runtime_error(
-                    std::string("Cannot pause Timer named ") + name + std::string(" because is not measuring!\n"));
+                std::string("Cannot pause Timer named ") + name +
+                std::string(" because is not measuring!\n"));
         }
     }
 
@@ -59,8 +62,9 @@ namespace Chronos {
             is_measuring = true;
             start_time = std::chrono::steady_clock::now();
         } else {
-            throw std::runtime_error(
-                    std::string("Cannot resume Timer named ") + name + std::string(" because is measuring!\n"));
+            throw std::runtime_error(std::string("Cannot resume Timer named ") +
+                                     name +
+                                     std::string(" because is measuring!\n"));
         }
     }
 
@@ -68,18 +72,20 @@ namespace Chronos {
         if (!is_measuring) {
             elapsed_seconds = std::chrono::duration<double>::zero();
         } else {
-            throw std::runtime_error(
-                    std::string("Cannot rest Timer named ") + name + std::string(" because is measuring!\n"));
+            throw std::runtime_error(std::string("Cannot rest Timer named ") +
+                                     name +
+                                     std::string(" because is measuring!\n"));
         }
     }
 
     void Timer::print_elapsed_time() {
         if (!is_measuring) {
-            std::cout << "Timer named " << name << " measured " << elapsed_seconds.count() << " s\n";
+            std::cout << "Timer named " << name << " measured "
+                      << elapsed_seconds.count() << " s\n";
         } else {
             throw std::runtime_error(
-                    std::string("Cannot print elapsed time of Timer named ") + name +
-                    std::string(" because is measuring!\n"));
+                std::string("Cannot print elapsed time of Timer named ") +
+                name + std::string(" because is measuring!\n"));
         }
     }
-}
+} // namespace Chronos
