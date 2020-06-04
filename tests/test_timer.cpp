@@ -7,8 +7,8 @@
 
 #define CATCH_CONFIG_MAIN
 
+#include "Chronos.hpp"
 #include "catch.hpp"
-#include "Timer.hpp"
 
 TEST_CASE("Test Timer exceptions") {
     Chronos::Timer timer("timer1");
