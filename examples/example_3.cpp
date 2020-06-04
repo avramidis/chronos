@@ -5,8 +5,8 @@
 // See accompanying file LICENSE.txt
 //---------------------------------------------------------------------------//
 
+#include "Chronos.hpp"
 #include <iostream>
-#include "Timers.hpp"
 #include <thread>
 
 int main() {
